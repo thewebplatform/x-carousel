@@ -6,57 +6,58 @@
     xtag.register('x-carousel', {
         lifecycle: {
             // Fires when an instance of the element is created
-            created: function() {
+            created: function () {
                 this._items = [];
             },
 
             // Fires when an instance was inserted into the document
-            inserted: function() {
+            inserted: function () {
                 this.loadItems();
                 this.loadTheme();
             },
-
-            loadTheme: function(){
+            // Fires when an instance was removed from the document
+            removed: function () {
 
             },
 
-            options: function(){
+            // Fires when an attribute was added, removed, or updated
+            attributeChanged: function (attr, oldVal, newVal) {
+
+            }
+        },
+
+        events: {},
+        accessors: {},
+        methods: {
+            
+            loadTheme: function () {
+
+            },
+
+            options: function () {
                 // TODO: refactor into
-                if(this.lazyload !== undefined && this.lazyload !== null){
+                if (this.lazyload !== undefined && this.lazyload !== null) {
                     // load items lazy
                 }
-                if(this.wrap !== undefined && this.wrap !== null) {
+                if (this.wrap !== undefined && this.wrap !== null) {
                     // wrap items
                 }
 
                 // controls
             },
 
-            loadItems: function(){
-                if(this.items !== undefined && this.items !== null && this.items !== ""){
+            loadItems: function () {
+                if (this.items !== undefined && this.items !== null && this.items !== "") {
                     // load JSON based on path
                 }
 
-                if(this.childNodes('li').length > 0) {
+                if (this.childNodes('li').length > 0) {
                     [].forEach.call(this.querySelectorAll('li'), function (carouselItem) {
-                        this._items.push({"item" : carouselItem, "content" : carouselItem.innerHTML })
+                        this._items.push({"item": carouselItem, "content": carouselItem.innerHTML})
                     }.bind(this));
                 }
-            },
-
-            // Fires when an instance was removed from the document
-            removed: function() {
-
-            },
-
-            // Fires when an attribute was added, removed, or updated
-            attributeChanged: function(attr, oldVal, newVal) {
-
             }
-        },
-        events: {},
-        accessors: {},
-        methods: {}
+        }
     });
 }());
 </script>
